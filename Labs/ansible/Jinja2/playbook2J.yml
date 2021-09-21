@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    list1: ['Application','Web','Base de données','DNS']
+  tasks:
+    - name: Liste
+      template:
+        src: example2.j2
+        dest: /tmp/output.txt

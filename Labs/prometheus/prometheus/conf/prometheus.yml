@@ -1,0 +1,28 @@
+---
+global:
+  evaluation_interval: 5s
+  scrape_interval: 1s
+scrape_configs:
+#Supervision de prometheus (lui même)
+  -
+    job_name: prometheus
+    static_configs:
+      -
+        targets:
+          - "localhost:9090"
+# Supervision de serveur d'application (agents: nginx exporter & node exporter)
+  -
+    job_name: wikiapp
+    static_configs:
+      -
+        targets:
+          - "10.10.10.2:9113"
+          - "10.10.10.2:9100"
+# Supervision du serveur BD (agent: MySQLD exporter)
+  -
+    job_name: wikidb
+    static_configs:
+      -
+        targets:
+          - "10.10.10.3:9104"
+

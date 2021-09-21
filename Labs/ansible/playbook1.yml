@@ -1,0 +1,8 @@
+---
+- name: playbook1
+  hosts: all
+  gather_facts: "no"
+  tasks:
+    - name: Install httpd
+      yum: name=httpd  state=absent
+#      when: ansible_os_family=="RedHat"

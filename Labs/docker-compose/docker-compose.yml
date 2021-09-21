@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+   app:
+     image: wiki_app:1.0
+     build: ./wiki_app
+     networks:
+       wiki-net:
+         ipv4_address: 10.10.10.2
+               
+   db:
+     image: wiki_db:1.0
+     build: ./wiki_db
+     networks:
+       wiki-net:
+         ipv4_address: 10.10.10.3
+
+networks:
+        wiki-net:
+          ipam:
+            config:
+              - subnet: 10.10.10.0/28

@@ -1,0 +1,14 @@
+- name: Test tags
+  hosts: 192.168.205.13
+  gather_facts: no
+
+  tasks:
+       - yum: name={{ item }} state=present
+         with_items:
+              - httpd
+              - memcached
+         tags:
+              - packages
+       - template: src=index.html dest=/tmp
+         tags:
+              - configuration
